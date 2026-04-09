@@ -1,0 +1,20 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Cursor / IDE (опционально убери строку ниже, если хочешь коммитить настройки)
+.cursor/
+
+# Локальные бэкапы страницы
+index.backup*.html
+
+# Черновики
+*.log
+
+# Локальные заметки (не часть сайта)
+Текстовый документ.txt
+
+# Python (если запускали tools/generate_placeholders.py)
+__pycache__/
+*.pyc

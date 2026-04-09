@@ -1,0 +1,906 @@
+/* ========== ШРИФТЫ ========== */
+/* Основной текст: Inter Regular (400) — подключение в index.html (Google Fonts). */
+
+@font-face {
+  font-family: "Fatboy129";
+  src:
+    url("../fonts/129%20Fatboy/129%20FATBOY.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Singfried01";
+  src:
+    url("../fonts/Singfried%2001/Singfried-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========== БАЗА ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 38px;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* hidden + visible по другой оси даёт обрезку капители; scroll не ломает пару осей */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Главный фрейм в точном размере артборда */
+.frame {
+  position: relative;
+  width: 1440px;
+  min-width: 1440px;
+  height: 3962px;
+  background: #ffffff;
+  /* Межстрочный интервал логотипа; на широких экранах переопределяется в @media (min-width: 1520px) */
+  --logo-word-line-height: 212px;
+  /* Верх .logo относительно фрейма (синхрон с .top-left-group top: 40px и margin .logo-word) */
+  --logo-top: 36px;
+  /* Вертикаль .logo-word (синхрон с margin/padding ниже) — для отступа до подзаголовка */
+  --logo-word-margin-top: -6px;
+  --logo-word-padding-top: 20px;
+  /* От низа двухстрочного логотипа до верхней строки подзаголовка */
+  --title-to-subtitle-gap: 38px;
+  /* Доп. сдвиг вниз: глифы / inline-block дают больший визуальный низ, чем 2×line-height */
+  --logo-subtitle-top-fudge: 26px;
+  /* Поднять блок подзаголовков относительно расчётной позиции */
+  --subtitles-shift-up: 16px;
+}
+
+/* Удобные утилиты */
+.text-helvetica {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em; /* -1% */
+}
+
+.caption-light {
+  opacity: 0.4;
+}
+
+/* ========== ВЕРХНЕЕ МЕНЮ (левый и правый края) ========== */
+
+/* Группа слева (координаты относительно артборда — можно подкорректировать по факту)
+   Внутри — локальные x как в макете (0 и 76) */
+.top-left-group {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  z-index: 20;
+  display: flex;
+  align-items: flex-start;
+  gap: 42px; /* INSTAGRAM x=42 от TG */
+  font-size: 30px;
+  line-height: 1; /* верх капитель TG / INSTAGRAM на одной линии с top: 40px */
+  cursor: default;
+}
+
+.top-right-group {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  z-index: 20;
+  display: flex;
+  align-items: flex-start;
+  gap: 42px; /* CV x=42 от LINKEDIN */
+  font-size: 30px;
+  line-height: 1;
+  cursor: default;
+}
+
+.top-left-group a,
+.top-right-group a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.top-left-group a:hover,
+.top-right-group a:hover,
+#footer-block a.footer-link:hover {
+  opacity: 0.85;
+}
+
+#footer-block a.footer-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Текст/ссылки над фоном и картинками футера */
+#footer-block > div:nth-child(6),
+#footer-block > a:nth-child(7),
+#footer-block > div:nth-child(8),
+#footer-block > a:nth-child(9) {
+  z-index: 5;
+}
+
+/* 7 — «НАПИСАТЬ НА EMAIL» слева; 9 — «ВВЕРХ» справа */
+#footer-block > a:nth-child(7) {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+#footer-block > a:nth-child(9) {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* ========== ЛОГОТИП ========== */
+
+.logo {
+  position: absolute;
+  top: var(--logo-top);
+  left: 0;
+  width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 40px;
+  box-sizing: border-box;
+  overflow: visible;
+  /* Обрезаем только горизонтальный вылет шрифта; overflow-x:hidden здесь обрезал бы капитель по вертикали */
+  clip-path: inset(-140px 0 -140px 0);
+  color: #000000;
+  font-family: "Singfried01", serif;
+}
+
+.logo-word {
+  font-size: 308px; /* базовый артборд 1440 */
+  letter-spacing: -1%;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-top: var(--logo-word-margin-top);
+  margin-bottom: 0;
+  line-height: var(--logo-word-line-height);
+  /* Капитель по линии с INSTAGRAM (top 40px): --logo-top + margin = 30px как при 40px + (-10px) */
+  padding: var(--logo-word-padding-top) 44px 0;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.logo-o-special {
+  font-family: "Fatboy129", "Singfried01", serif;
+  display: inline-block;
+  /* Fatboy шире/круглее Singfried — запас внутри строки против горизонтального клипа .logo */
+  padding: 3px 7px 2px;
+}
+
+/* ========== ПОДЗАГОЛОВКИ ПОД ЛОГОТИПОМ ========== */
+
+.subtitles-wrapper {
+  position: absolute;
+  /* .logo top + вертикаль .logo-word + 38px до SENIOR PRODUCT DESIGNER */
+  top: calc(
+    var(--logo-top) + var(--logo-word-margin-top) + var(--logo-word-padding-top) +
+      (2 * var(--logo-word-line-height)) + var(--title-to-subtitle-gap) +
+      var(--logo-subtitle-top-fudge) - var(--subtitles-shift-up)
+  );
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.subtitle-main {
+  margin-top: 1px;
+  font-size: 38px;
+  line-height: 1.43;
+  height: 44px;
+  letter-spacing: 0; /* -0% */
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.subtitle-secondary {
+  margin-top: 1px;
+  font-size: 38px;
+  line-height: 1.43;
+  height: 44px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+/* ========== ЛЕВЫЙ ТЕКСТОВЫЙ БЛОК ========== */
+
+/* Общий контейнер, чтобы внутри использовать (0,0) и (0,72) как в макете */
+.left-column {
+  position: absolute;
+  top: 706px;  /* 100px отступ от subtitle-secondary */
+  left: 140px; /* X колонки относительно артборда */
+  width: 682px; /* обновлено под ширину текста */
+  font-size: 30px;
+  line-height: 36px; /* Line height 36 */
+  letter-spacing: -0.01em;
+  font-family: "Inter", sans-serif;
+  text-align: left; /* выравнивание по левому краю, как у TG */
+}
+
+.left-text-main {
+  display: block;
+  margin-top: -17px;
+  margin-left: -111px;
+  width: 682px;
+}
+
+.left-text-second {
+  display: block;
+  margin-top: 0;
+  margin-left: -112px;
+  width: 558px;
+}
+
+.left-worked-title {
+  position: absolute;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1519px) {
+  .left-worked-title {
+    top: 1180px;
+    left: 232px;
+  }
+}
+
+.left-worked-tech {
+  position: absolute;
+  top: 1214px;
+  left: 95px;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+}
+
+.left-worked-brands {
+  position: absolute;
+  top: 1249px;
+  left: 251px;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+}
+
+/* ========== АВАТАР ========== */
+
+.avatar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 769px;
+  width: 464px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  transform: translateX(-10px);
+}
+
+/* ========== LOGO BRAND ========== */
+/* Только артборд 1440: при ширине окна < 1520px действует это правило.
+   Широкий экран (1920-вёрстка): left/top см. ниже в @media (min-width: 1520px) → .logo-brand-wrapper */
+
+.logo-brand-wrapper {
+  position: absolute;
+  left: 211px;
+  top: 1303px;
+  width: 210px;
+  height: 73px;
+  overflow: hidden;
+}
+
+.logo-brand {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========== КРУЖКИ БРЕНДОВ ========== */
+
+.brands {
+  position: absolute;
+  left: 241px;
+  top: 1414px;
+  width: 368px;  /* ширина твоего PNG с тремя логотипами */
+  height: auto;
+}
+
+/* ========== ПРАВЫЙ СПИСОК НАВЫКОВ ========== */
+
+.skills-item {
+  position: absolute;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  font-family: "Inter", sans-serif;
+  opacity: 0.4;
+  text-transform: uppercase;
+  width: 288px;
+  height: 33px;
+}
+
+/* координаты по макету */
+.skills-art-direction {
+  left: 960px;
+  top: 1291px;
+  width: 288px;
+}
+
+.skills-ux-design {
+  left: 960px;
+  top: 1325px;
+}
+
+.skills-interface-design {
+  left: 917px;
+  top: 1359px;
+}
+
+.skills-mobile-design {
+  left: 917px;
+  top: 1393px;
+}
+
+.skills-visual-design {
+  left: 917px;
+  top: 1427px;
+}
+
+/* ========== ФОНОВОЕ ИЗОБРАЖЕНИЕ ========== */
+
+.background-blue {
+  position: absolute;
+  top: 1641px;
+  left: 0;
+  width: 100%;
+  height: 900px;
+  transition: opacity 0.4s ease;
+}
+
+.background-pink {
+  position: absolute;
+  top: 1641px;
+  left: 0;
+  width: 100%;
+  height: 900px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* ========== ЗАГОЛОВОК КЕЙСОВ ========== */
+
+.cases-title {
+  position: absolute;
+  top: 1700px;
+  left: 30px;
+  width: 1380px;
+  font-family: "Singfried01", serif;
+  font-size: 134px;
+  line-height: 107px;
+  padding-top: 16px;
+  text-align: center;
+  color: #000000;
+  letter-spacing: -1px;
+}
+
+/* ========== КАСТОМНЫЙ КУРСОР ========== */
+
+.background-blue,
+.background-pink,
+.cases-title,
+#case-title-1, #case-title-2,
+#case-sub-1, #case-sub-2,
+#case-img-1, #case-img-2 {
+  cursor: none;
+}
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 160px;
+  pointer-events: none;
+  display: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+#custom-cursor img {
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== STORY КОЛЬЦО ========== */
+
+.story-wrapper {
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.story-wrapper > div {
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+.story-ring-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.story-ring-progress {
+  transform-origin: 48px 48px;
+  transform: rotate(-90deg);
+}
+
+@keyframes story-ring-fill {
+  from { stroke-dashoffset: 276.5; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ========== КНОПКА НАПИСАТЬ ========== */
+
+.btn-napisat {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
+  height: 72px;
+  z-index: 100;
+  display: block;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.btn-napisat img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+/* Силовые линии сетки — только при ширине 1920-артборда */
+.layout-guides-1920 {
+  display: none;
+}
+
+#section-brand-work picture.brand-row-divider img {
+  opacity: 0.66 !important;
+}
+
+/* ========== 1920px BREAKPOINT ========== */
+
+/*
+  Срабатывает по ширине viewport (окна), не по классу .frame.
+  Порог 1520px: ниже 1910, чтобы при масштабе Windows 125% на Full HD (~1536 CSS px)
+  всё ещё включалась вёрстка 1920. На чистых 1440px окнах (ширина < 1520) остаётся артборд 1440.
+*/
+@media (min-width: 1520px) {
+
+  html,
+  body {
+    min-height: auto;
+  }
+
+  /* Фрейм */
+  .frame {
+    width: 1920px;
+    min-width: 1920px;
+    /* Было 220px при базовом 179px; масштаб как 169/179 от прежней пары */
+    --logo-word-line-height: 212px;
+    --logo-word-margin-top: -8px;
+    --logo-word-padding-top: 28px;
+    --logo-subtitle-top-fudge: 24px;
+    /* Низ аватара на 1920 (как на 1440: top + высота при ширине 464 → 774/464) */
+    --avatar-top-1920: 769px;
+    --avatar-w-1920: 492px;
+    --avatar-bottom-1920: calc(
+      var(--avatar-top-1920) + var(--avatar-w-1920) * 774 / 464
+    );
+    /*
+      На 1440: верх фона 1641 − низ аватара ≈ 98px; делаем на 1920 95px до фона,
+      заголовок кейсов +59px от верха фона → +154px от низа аватара.
+    */
+    --cases-title-y: calc(var(--avatar-bottom-1920) + 154px);
+    --frame-pad-x: 80px;
+    --brand-line-h: calc((1920px - 2 * var(--frame-pad-x) - 32px) * 59 / 1378);
+    /* Низ фона подрезаем (контент футера выше артборда) */
+    --footer-img-h: calc(479px * 1920 / 1440 * 0.95 - 52px);
+    height: calc(
+      var(--cases-title-y) + 1124px + 446px + 4 * var(--brand-line-h) +
+        var(--footer-img-h) - 28px
+    );
+  }
+
+  /* Лого-контейнер */
+  .logo {
+    width: 1920px;
+    font-size: 295px;
+  }
+  .logo-word {
+    font-size: 308px;
+    padding: var(--logo-word-padding-top) 52px 0;
+  }
+
+  /* Подзаголовки: тот же 38px от низа двухстрочного логотипа */
+  .subtitle-main,
+  .subtitle-secondary {
+    font-size: 40px;
+    height: auto;
+  }
+
+  .subtitle-main {
+    margin-top: 5px; /* на 1920: чуть ниже (+1px к базе) */
+  }
+
+  .subtitle-secondary {
+    margin-top: -10px; /* плотнее к subtitle-main: ~−6px к прежнему −4px на полноэкране */
+  }
+
+  /* Боковые отступы 80px (контент 1920 − 160 = 1760px, --frame-pad-x) */
+  /*
+    Кейсы: якорь — --cases-title-y. Ниже — те же px-отступы, что на 1440 от заголовка
+    (не ×5300/3962): компактнее второй экран — фон 900px, мокапы 360×527 как на 1440.
+  */
+  .cases-title {
+    left: var(--frame-pad-x);
+    width: calc(1920px - 2 * var(--frame-pad-x));
+    top: var(--cases-title-y) !important;
+  }
+
+  .background-blue,
+  .background-pink {
+    top: calc(var(--cases-title-y) - 59px) !important;
+    height: 900px !important;
+  }
+
+  /* Как .subtitle-main на 1920: 40px, line-height 1.43 */
+  #case-title-1,
+  #case-title-2 {
+    top: calc(var(--cases-title-y) + 314px) !important;
+    font-size: 40px !important;
+    line-height: 1.43 !important;
+    height: auto !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Как .left-text-main на 1920: 34px / 40px */
+  #case-sub-1,
+  #case-sub-2 {
+    top: calc(var(--cases-title-y) + 387px) !important;
+    font-size: 34px !important;
+    line-height: 40px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  #case-img-1,
+  #case-img-2 {
+    top: calc(var(--cases-title-y) + 314px) !important;
+    left: calc(50% - 180px) !important;
+    width: 360px !important;
+    height: 527px !important;
+  }
+
+  #story-1 {
+    top: calc(var(--cases-title-y) + 314px) !important;
+  }
+
+  /* 314 + 96 + 18 = 428 — как на 1440 между шайбами */
+  #story-2 {
+    top: calc(var(--cases-title-y) + 428px) !important;
+  }
+
+  /* Как на 1440: вся ширина фрейма + тот же шаг до блока бренда (936 → 1124 = 188px) */
+  #section-bg-heading {
+    top: calc(var(--cases-title-y) + 936px) !important;
+    left: 0 !important;
+    width: 100% !important;
+    font-family: "Singfried01", serif !important;
+    font-size: 134px !important;
+    line-height: 1 !important;
+    padding-top: 0 !important;
+    letter-spacing: normal !important;
+    text-align: center !important;
+    color: #000000 !important;
+    font-weight: normal !important;
+    white-space: nowrap !important;
+  }
+
+  #section-brand-work {
+    top: calc(var(--cases-title-y) + 1124px) !important;
+  }
+
+  #footer-block {
+    height: var(--footer-img-h) !important;
+  }
+  #footer-block > img:first-child {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  /* Центр футера — ссылка на TG */
+  #footer-task-question-link {
+    transform: translate(-50%, calc(-50% + 8px)) !important;
+    z-index: 3;
+  }
+  #footer-task-question-link img {
+    width: 736px !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  #footer-bogdan {
+    top: 377px !important;
+    left: 429px !important;
+    width: 178px !important;
+  }
+
+  #footer-sasha {
+    top: 270px !important;
+    left: 1346px !important;
+    width: 152px !important;
+  }
+
+  #footer-max {
+    top: 438px !important;
+    left: 1231px !important;
+    width: 152px !important;
+  }
+
+  /* Навигация: TG / INSTAGRAM / LINKEDIN / CV */
+  .top-left-group,
+  .top-right-group {
+    font-size: 34px;
+  }
+  /* INSTAGRAM у 2-й направляющей, −2px */
+  .top-left-group {
+    left: var(--frame-pad-x);
+    gap: 0;
+  }
+  .top-left-group > a:nth-of-type(2) {
+    position: absolute;
+    left: calc(188px - var(--frame-pad-x));
+    top: 0;
+  }
+  .top-right-group {
+    right: var(--frame-pad-x);
+    gap: 52px;
+  }
+  .top-right-group > a:first-of-type {
+    transform: translateX(-9px);
+  }
+
+  /* Кнопка НАПИСАТЬ: как база (fixed, bottom, left 50%, translate −50%) + размер 1920 */
+  .btn-napisat {
+    width: 336px;
+    height: 73px;
+  }
+
+  .layout-guides-1920 {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .layout-guides-1920 .layout-guide-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--lg-x) - 0.5px);
+    width: 1px;
+    background: rgba(255, 0, 136, 0.38);
+  }
+
+  /* 95px под subtitle-secondary до .left-text-main (40px/1.43, +17px под margin-top −17 у main) */
+  .left-column {
+    top: calc(
+      var(--logo-top) + var(--logo-word-margin-top) + var(--logo-word-padding-top) +
+        (2 * var(--logo-word-line-height)) + var(--title-to-subtitle-gap) +
+        var(--logo-subtitle-top-fudge) - var(--subtitles-shift-up) +
+        5px + (40px * 1.43) - 10px + (40px * 1.43) + 95px + 17px
+    );
+    left: calc(var(--frame-pad-x) + 111px); /* left-text-main margin-left: -111px → x = pad */
+  }
+  .left-text-main {
+    width: 797px;
+    height: 84px;
+    font-size: 34px;
+    line-height: 40px;
+  }
+  .left-text-second {
+    width: 667px;
+    height: 168px;
+    font-size: 34px;
+    line-height: 40px;
+    /* translateY: margin с соседним .left-text-main может схлопываться — сдвиг не виден */
+    transform: translateY(-2px);
+  }
+
+  /* РАБОТАЛ / С ТЕХНОЛОГИЧНЫМИ / БРЕНДАМИ */
+  .left-worked-title {
+    top: 1220px;
+    left: 444px;
+    font-size: 34px;
+    line-height: 34px;
+  }
+  .left-worked-tech {
+    top: 1259px;
+    left: 291px;
+    font-size: 34px;
+    line-height: 34px;
+  }
+  .left-worked-brands {
+    top: 1299px;
+    left: 470px;
+    font-size: 34px;
+    line-height: 34px;
+  }
+
+  /* Logo brand: 26px под строкой «БРЕНДАМИ» (1299 + 34 + 26) */
+  #logo-brand-wrapper.logo-brand-wrapper {
+    top: 1359px !important;
+    left: 452px !important;
+  }
+
+  .brands {
+    left: 293px;
+  }
+
+  /* Навыки */
+  .skills-item {
+    font-size: 34px;
+    line-height: 36px;
+  }
+  /* ART DIRECTION; шаг между пунктами 37px (−1px к 38) */
+  .skills-art-direction  { left: 1229px; top: 1325px; }
+  .skills-ux-design      { left: 1229px; top: 1362px; }
+  .skills-interface-design {
+    left: 1172px;
+    top: 1399px;
+    width: auto;
+    min-width: 320px;
+    max-width: 420px;
+    height: auto;
+    white-space: nowrap;
+  }
+  .skills-mobile-design  { left: 1172px; top: 1436px; }
+  .skills-visual-design  { left: 1172px; top: 1473px; }
+
+  /* Аватар: поле 80px — translate −16 (−6 и −10 к полю 90) */
+  .avatar {
+    top: var(--avatar-top-1920);
+    width: var(--avatar-w-1920);
+    transform: translateX(-16px);
+  }
+
+  /* Кейсы: левый край по полю */
+  #case-title-1,
+  #case-title-2,
+  #case-sub-1,
+  #case-sub-2 {
+    left: var(--frame-pad-x) !important;
+  }
+  /* Правый край story у 6-й линии; до 7-й (1840) ровно 109px */
+  #story-1,
+  #story-2 {
+    left: calc(1731px - 96px) !important;
+  }
+
+  picture.brand-row-divider {
+    margin-left: calc(var(--frame-pad-x) + 16px) !important;
+    width: calc(1920px - 2 * var(--frame-pad-x) - 32px) !important;
+    max-width: none !important;
+  }
+
+  #section-brand-work > div.brand-row:first-child {
+    margin-bottom: 16px !important;
+  }
+
+  #section-brand-work .brand-row[style*="margin-top: 36px"] {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  picture.brand-row-divider img {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  #section-brand-work div.brand-row > img:first-child {
+    left: 190px !important;
+    top: 22px !important;
+  }
+  #section-brand-work div.brand-row > div:nth-child(2) {
+    left: 266px !important;
+    top: 36px !important;
+  }
+  #section-brand-work div.brand-row > div:nth-child(3) {
+    left: auto !important;
+    right: calc(1920px - 1731px) !important;
+    top: 36px !important;
+  }
+
+  /* Футер: навигация у краёв футера */
+  #footer-block > div:nth-child(6),
+  #footer-block > a:nth-child(7) {
+    left: var(--frame-pad-x) !important;
+  }
+  #footer-block > div:nth-child(8),
+  #footer-block > a:nth-child(9) {
+    right: var(--frame-pad-x) !important;
+  }
+
+  /* Футер: TG / INSTAGRAM / LINKEDIN / CV — как левый текст, 34px (inline 30px) */
+  #footer-block > div:nth-child(6),
+  #footer-block > div:nth-child(8) {
+    font-size: 34px !important;
+  }
+
+  /* Вторая строка слева — почта (под TG/INSTAGRAM): 90−(40+30)=20px → 40+34+20 */
+  #footer-block > a:nth-child(7) {
+    top: 94px !important;
+    font-size: 34px !important;
+    font-weight: 400 !important;
+  }
+
+  /* Вторая строка справа — ВВЕРХ (под LINKEDIN/CV): 92−(40+30)=22px → 40+34+22 */
+  #footer-block > a:nth-child(9) {
+    top: 96px !important;
+    font-size: 34px !important;
+    font-weight: 400 !important;
+  }
+
+  #brand-preview-img {
+    width: 272px !important;
+  }
+}
+
