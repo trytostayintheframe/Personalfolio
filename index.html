@@ -22,14 +22,19 @@
       if (z < 1) {
         document.documentElement.style.setProperty('--frame-zoom', z.toFixed(6));
       }
-      /* Метки платформы: у Singfried01 на macOS другие вертикальные метрики,
-         из-за чего две строки .logo-word перекрываются при tight line-height.
-         Под .is-mac отдаём увеличенный --logo-word-line-height. */
+      /* Детект macOS: у Singfried01 на Mac другие вертикальные метрики
+         (ascent/descent), из-за чего две строки .logo-word визуально
+         стоят шире, чем на Windows. Под .is-mac поджимаем line-height.
+         Берём ua | platform | userAgentData — что угодно, где всплывёт "Mac". */
       var ua = navigator.userAgent || '';
       var plat = navigator.platform || '';
-      if (/Mac/.test(plat) || /Mac OS X/.test(ua)) {
+      var uaData = navigator.userAgentData && navigator.userAgentData.platform;
+      var isMac = /Mac/i.test(ua) || /Mac/i.test(plat) || /mac/i.test(uaData || '');
+      if (isMac) {
         document.documentElement.classList.add('is-mac');
       }
+      /* Отладочный маркер: можно проверить в консоли Mac — должно быть true. */
+      window.__isMacDetected = isMac;
     }());
   </script>
 

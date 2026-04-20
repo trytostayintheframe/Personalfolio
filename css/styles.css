@@ -79,14 +79,17 @@ html {
 
 /* ========== macOS override для логотипа ==========
    На Mac Singfried01 визуально «расходится» — «Вова» и «пикалёв» стоят
-   дальше, чем на Windows. Сильно ужимаем line-height до 100px, чтобы
-   строки подтянулись. При этом --subtitles-shift-up компенсируем на ту
-   же величину (16 − 2×(212−100) = −208), иначе подзаголовок SENIOR PRODUCT
-   DESIGNER и весь .left-column на 1920 уедут вверх вместе со строками —
-   они позиционируются по той же формуле через calc. */
+   дальше, чем на Windows. Ужимаем line-height до 100px (и параллельно
+   страхуемся прямым правилом на .logo-word ниже с !important).
+   --subtitles-shift-up компенсируем на ту же дельту (16 − 2×(212−100) = −208),
+   иначе подзаголовок SENIOR PRODUCT DESIGNER и весь .left-column уедут
+   вверх: они позиционируются через ту же формулу с calc. */
 html.is-mac .frame {
   --logo-word-line-height: 100px;
   --subtitles-shift-up: -208px;
+}
+html.is-mac .logo-word {
+  line-height: 100px !important;
 }
 
 /* Удобные утилиты */
