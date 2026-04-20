@@ -51,7 +51,10 @@ body {
   position: relative;
   width: 1440px;
   min-width: 1440px;
-  height: 3962px;
+  /* Базовая высота артборда — вынесена в переменную, чтобы переиспользовать в
+     адаптивном масштабировании (ниже, в media-правилах scale). */
+  --frame-base-height: 3962px;
+  height: var(--frame-base-height);
   background: #ffffff;
   /* Межстрочный интервал логотипа; на широких экранах переопределяется в @media (min-width: 1520px) */
   --logo-word-line-height: 212px;
@@ -549,10 +552,11 @@ body {
     --brand-line-h: calc((1920px - 2 * var(--frame-pad-x) - 32px) * 59 / 1378);
     /* Низ фона подрезаем (контент футера выше артборда) */
     --footer-img-h: calc(479px * 1920 / 1440 * 0.95 - 52px);
-    height: calc(
+    --frame-base-height: calc(
       var(--cases-title-y) + 1124px + 446px + 4 * var(--brand-line-h) +
         var(--footer-img-h) - 28px
     );
+    height: var(--frame-base-height);
   }
 
   /* Лого-контейнер */
@@ -901,6 +905,69 @@ body {
 
   #brand-preview-img {
     width: 272px !important;
+  }
+}
+
+/* ========== АДАПТИВНОЕ МАСШТАБИРОВАНИЕ (узкие и средние экраны) ==========
+
+   Используем transform: scale (не zoom), потому что у zoom в Chrome есть
+   долгоиграющие баги с event.clientX/Y и elementsFromPoint внутри
+   зумированного поддерева — ломается определение зоны «смотреть кейс»
+   и parallax-анимация в футере.
+
+   Схема: transform: scale + transform-origin: top center. Горизонтально
+   центрируется автоматически (флекс body + центральный origin). Вертикально
+   transform не уменьшает layout-высоту, поэтому под фреймом остаётся пустая
+   полоса — её схлопывает JS, выставляя body.height = visualH.
+   html/body overflow-x: hidden прячет любые крошечные боковые переливы.
+
+   Диапазоны (см. adaptiveScaleResize в main.js):
+     < 1440px          → макет 1440, scale = viewport / 1440
+     1440px – 1519px   → макет 1440 помещается как есть, scale = 1
+     1520px – 1919px   → макет 1920, scale = viewport / 1920
+     ≥ 1920px          → макет 1920 как есть, scale = 1                         */
+
+:root {
+  --frame-zoom: 1;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.frame {
+  transform-origin: top center;
+  transform: scale(var(--frame-zoom));
+}
+
+/* ========== ФОНЫ КРАЙ-В-КРАЙ (1440px–1519px) ==========
+
+   В этом диапазоне 1440px-фрейм помещается без масштабирования, но он уже,
+   чем viewport: центрирование body оставляет (viewport − 1440px) / 2 белых
+   полей с каждой стороны. Фоновые изображения — кейсы и футер — по дизайну
+   должны уходить до краёв экрана, поэтому растягиваем их на 100vw через
+   отрицательный left (= смещение ровно на величину белого поля влево).
+
+   Контентные оверлеи (текст, аватары) остаются на своих px-позициях
+   относительно фрейма — они не трогаются. */
+
+@media (min-width: 1440px) and (max-width: 1519px) {
+  .background-blue,
+  .background-pink {
+    left: calc((1440px - 100vw) / 2);
+    width: 100vw;
+  }
+
+  /* Растягиваем весь #footer-block до 100vw. Вместе с ним:
+      – Footer.png уходит до краёв экрана (у него width: 100%);
+      – элементы справа (LINKEDIN, CV, ВВЕРХ) остаются у нового правого края;
+      – элементы слева (TG, EMAIL) — у нового левого края;
+      – «task question» центрируется относительно новой ширины.
+     Так оверлеи не разъезжаются с фоном — они двигаются вместе с ним. */
+  #footer-block {
+    width: 100vw !important;
+    margin-left: calc((1440px - 100vw) / 2);
+    margin-right: calc((1440px - 100vw) / 2);
   }
 }
 

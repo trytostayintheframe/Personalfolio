@@ -1,3 +1,76 @@
+    /* ========== АДАПТИВНОЕ МАСШТАБИРОВАНИЕ через transform: scale ==========
+       Что делаем:
+       1) --frame-zoom обновляется на resize (начальное значение — inline-скрипт в <head>).
+       2) .frame.height подгоняется под реальный низ #footer-block (а не 3962/calc-артборд),
+          чтобы на scale=1 под футером не висела пустая полоса (макет выше контента).
+       3) При scale<1 transform не уменьшает layout-высоту — добавляем отрицательный
+          margin-bottom на .frame: внешний кросс-размер flex-item = height + margin-bottom =
+          = visualH, и body схлопывается ровно до визуальной высоты без вложенного скролла. */
+    (function adaptiveScale() {
+      var root = document.documentElement;
+
+      function compute(w) {
+        if (w < 1440) return w / 1440;
+        if (w >= 1520 && w < 1920) return w / 1920;
+        return 1;
+      }
+
+      /* Низ #footer-block относительно .frame в layout-координатах (без учёта transform). */
+      function measureContentHeight(frame) {
+        var footer = document.getElementById('footer-block');
+        if (!footer) return frame.offsetHeight;
+        var el = footer;
+        var offset = 0;
+        while (el && el !== frame) {
+          offset += el.offsetTop || 0;
+          el = el.offsetParent;
+        }
+        return offset + footer.offsetHeight;
+      }
+
+      function apply() {
+        var frame = document.querySelector('.frame');
+        if (!frame) return;
+
+        var w = window.innerWidth;
+        var z = compute(w);
+        root.style.setProperty('--frame-zoom', z < 1 ? z.toFixed(6) : '1');
+
+        /* Сбрасываем прошлые override'ы перед измерением, иначе при повторных вызовах
+           намерили бы уже сжатый layout и сами себя зажали. */
+        frame.style.height = '';
+        document.body.style.height = '';
+        document.body.style.overflowY = '';
+
+        var contentH = measureContentHeight(frame);
+        frame.style.height = contentH + 'px';
+
+        if (z < 1) {
+          /* Визуальная высота сжатого фрейма. Явно задаём body height под неё и
+             прячем вертикальный overflow body, чтобы невидимый layout-хвост (transform
+             не уменьшает layout-размер) не создавал скроллбар внутри body.
+             Основной page-scroll остаётся на html — он всё равно сам пересчитает
+             свою высоту под body.
+
+             Math.floor (а не round) — чтобы при суб-пиксельном результате body НЕ оказался
+             выше визуального низа фрейма. Иначе под футером остаётся тонкая (0.3–0.7px)
+             белая полоска. Потерянные пол-пикселя визуала незаметно обрежет overflow:hidden. */
+          document.body.style.height = Math.floor(contentH * z) + 'px';
+          document.body.style.overflowY = 'hidden';
+        }
+      }
+
+      window.addEventListener('resize', apply);
+      window.addEventListener('load', apply);
+      /* Повторный прогон после загрузки шрифтов/картинок — их реальные размеры могут
+         чуть сдвинуть низ футера. */
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(apply).catch(function () {});
+      }
+      if (document.readyState !== 'loading') apply();
+      else document.addEventListener('DOMContentLoaded', apply);
+    })();
+
     const STORY_DURATION = 7000;
     const CIRCUMFERENCE = 276.5;
     const storyIds = ['story-1', 'story-2'];

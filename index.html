@@ -11,6 +11,20 @@
 
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- Масштабирование артборда: задаём zoom ДО первого рендера чтобы не было
+       flash несжатого 1440px фрейма на узких экранах.
+       zoom принимает только <number>/<percentage>, поэтому нельзя писать
+       calc(100vw/1440) прямо в CSS (там <length>) — задаём через CSS-переменную. -->
+  <script>
+    (function () {
+      var w = window.innerWidth;
+      var z = w < 1440 ? w / 1440 : (w >= 1520 && w < 1920 ? w / 1920 : 1);
+      if (z < 1) {
+        document.documentElement.style.setProperty('--frame-zoom', z.toFixed(6));
+      }
+    }());
+  </script>
+
 </head>
 <body>
   <div class="frame">
@@ -100,9 +114,6 @@
     <div class="skills-item skills-mobile-design">
       MOBILE DESIGN
     </div>
-
-    <!-- Кастомный курсор -->
-    <div id="custom-cursor"><img src="img/Cursor.svg" alt="" /></div>
 
     <!-- Фоновые изображения -->
     <img class="background-blue" id="bg-blue" src="img/BackgroundBlue.png" alt="" />
@@ -251,13 +262,16 @@
       <span class="layout-guide-line" style="--lg-x: 1840px"></span>
     </div>
 
-    <!-- Кнопка НАПИСАТЬ -->
-    <a class="btn-napisat" href="https://t.me/thxbasedgod" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
-      <img src="img/НАПИСАТЬ.svg" alt="" />
-    </a>
-
   </div>
 
+  <!-- Кнопка НАПИСАТЬ и кастомный курсор — вне .frame,
+       иначе transform: scale на артборде ломает position: fixed -->
+  <a class="btn-napisat" href="https://t.me/thxbasedgod" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+    <img src="img/НАПИСАТЬ.svg" alt="" />
+  </a>
+
+  <!-- Кастомный курсор (смотреть кейс) -->
+  <div id="custom-cursor"><img src="img/Cursor.svg" alt="" /></div>
 
   <!-- Плавающий превью для brand-строк -->
   <div id="brand-preview" style="
