@@ -91,6 +91,10 @@ html.is-mac .frame {
 html.is-mac .logo-word {
   line-height: 178px !important;
 }
+/* Заголовок секции кейсов «Продуктовые кейсы» — двухстрочный, тот же Singfried01. */
+html.is-mac .cases-title {
+  line-height: 90px !important;
+}
 
 /* Удобные утилиты */
 .text-helvetica {
