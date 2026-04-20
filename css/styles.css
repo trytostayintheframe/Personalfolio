@@ -46,6 +46,12 @@ body {
   overflow-y: auto;
 }
 
+/* На macOS (Safari/Chrome) rubber-band overscroll показывает белую полоску под футером.
+   Отключаем — тогда тело страницы жёстко заканчивается по bottom. */
+html {
+  overscroll-behavior-y: none;
+}
+
 /* Главный фрейм в точном размере артборда */
 .frame {
   position: relative;
@@ -69,6 +75,17 @@ body {
   --logo-subtitle-top-fudge: 26px;
   /* Поднять блок подзаголовков относительно расчётной позиции */
   --subtitles-shift-up: 16px;
+}
+
+/* ========== macOS fix для логотипа ==========
+   Шрифт Singfried01 на Mac рендерит глифы по другим вертикальным метрикам
+   (OS/2 typo ascent/descent), из-за чего при tight line-height 212px строки
+   «Вова» и «пикалёв» налезают друг на друга.
+   Увеличиваем line-height и одновременно поднимаем блок подзаголовков на ту же
+   дельту — чтобы SENIOR PRODUCT DESIGNER остался на прежней координате. */
+html.is-mac .frame {
+  --logo-word-line-height: 240px; /* +28px к базовым 212 */
+  --subtitles-shift-up: 72px;     /* 16 + 2×28 — компенсация, чтобы подзаголовок не «уехал» */
 }
 
 /* Удобные утилиты */

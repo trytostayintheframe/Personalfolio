@@ -8,6 +8,10 @@
           = visualH, и body схлопывается ровно до визуальной высоты без вложенного скролла. */
     (function adaptiveScale() {
       var root = document.documentElement;
+      /* На macOS rubber-band overscroll отключён (см. CSS), но transform: scale
+         ещё и округляется браузером иначе — даём лишний пиксель запаса, чтобы
+         под футером не проявлялась белая полоска. */
+      var isMac = /Mac/.test(navigator.platform || '') || /Mac OS X/.test(navigator.userAgent || '');
 
       function compute(w) {
         if (w < 1440) return w / 1440;
@@ -54,8 +58,11 @@
 
              Math.floor (а не round) — чтобы при суб-пиксельном результате body НЕ оказался
              выше визуального низа фрейма. Иначе под футером остаётся тонкая (0.3–0.7px)
-             белая полоска. Потерянные пол-пикселя визуала незаметно обрежет overflow:hidden. */
-          document.body.style.height = Math.floor(contentH * z) + 'px';
+             белая полоска. Потерянные пол-пикселя визуала незаметно обрежет overflow:hidden.
+             На Mac дополнительно срезаем 1px — там transform округляется агрессивнее. */
+          var bodyH = Math.floor(contentH * z);
+          if (isMac) bodyH = Math.max(0, bodyH - 1);
+          document.body.style.height = bodyH + 'px';
           document.body.style.overflowY = 'hidden';
         }
       }

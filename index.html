@@ -22,6 +22,14 @@
       if (z < 1) {
         document.documentElement.style.setProperty('--frame-zoom', z.toFixed(6));
       }
+      /* Метки платформы: у Singfried01 на macOS другие вертикальные метрики,
+         из-за чего две строки .logo-word перекрываются при tight line-height.
+         Под .is-mac отдаём увеличенный --logo-word-line-height. */
+      var ua = navigator.userAgent || '';
+      var plat = navigator.platform || '';
+      if (/Mac/.test(plat) || /Mac OS X/.test(ua)) {
+        document.documentElement.classList.add('is-mac');
+      }
     }());
   </script>
 
