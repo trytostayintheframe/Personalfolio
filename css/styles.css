@@ -95,14 +95,6 @@ html.is-mac .cases-title {
   line-height: 94px !important;
 }
 
-/* На Mac весь контент ниже логотипа/верхнего меню поднимаем на 10px.
-   Работает и для position: absolute — margin-top сдвигает абсолютно
-   позиционированные элементы. Исключаем .logo, верхние ссылки и
-   вспомогательные guides. */
-html.is-mac .frame > *:not(.logo):not(.top-left-group):not(.top-right-group):not(.layout-guides-1920) {
-  margin-top: -10px;
-}
-
 /* Удобные утилиты */
 .text-helvetica {
   font-family: "Inter", sans-serif;
