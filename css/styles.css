@@ -108,6 +108,11 @@ html.is-mac .skills-ux-design       { margin-top: 1px; }
 html.is-mac .skills-interface-design { margin-top: 2px; }
 html.is-mac .skills-mobile-design    { margin-top: 3px; }
 html.is-mac .skills-visual-design    { margin-top: 4px; }
+/* На Mac у подзаголовка кейса №2 увеличиваем line-height до 40px.
+   !important нужен, т.к. исходное значение задано inline в index.html. */
+html.is-mac #case-sub-2 {
+  line-height: 40px !important;
+}
 
 /* Удобные утилиты */
 .text-helvetica {
