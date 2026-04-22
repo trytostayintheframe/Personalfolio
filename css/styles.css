@@ -86,7 +86,11 @@ html {
    вверх: они позиционируются через ту же формулу с calc. */
 html.is-mac .frame {
   --logo-word-line-height: 168px;
-  --subtitles-shift-up: -72px; /* 2×168 − 408 */
+  /* Логотип опускаем на 10px на Mac (36 → 46). subtitles-shift-up
+     компенсируем на те же 10px, чтобы подзаголовки и .left-column
+     остались на прежних Y (формула: top + ... − subtitles-shift-up). */
+  --logo-top: 46px;
+  --subtitles-shift-up: -62px; /* было -72; +10 компенсирует +10 в logo-top */
 }
 html.is-mac .logo-word {
   line-height: 168px !important;
