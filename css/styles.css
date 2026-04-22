@@ -98,6 +98,11 @@ html.is-mac .logo-word {
 html.is-mac .cases-title {
   line-height: 94px !important;
 }
+/* На Mac верхние ссылки (TG / INSTAGRAM / LINKEDIN / CV) поднимаем на 4px. */
+html.is-mac .top-left-group,
+html.is-mac .top-right-group {
+  top: 36px;
+}
 
 /* Удобные утилиты */
 .text-helvetica {
