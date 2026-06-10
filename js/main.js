@@ -39,7 +39,7 @@
         var w = window.innerWidth;
 
         /* On mobile: disable scaling, let CSS handle layout */
-        if (w <= 430) {
+        if (w <= 500) {
           root.style.setProperty('--frame-zoom', '1');
           frame.style.height = '';
           frame.style.transform = 'none';
