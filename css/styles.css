@@ -1189,11 +1189,11 @@ html {
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    transform: translateX(-4px);
+    transform: translateX(-5px);
   }
   .m-brand-circle {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 2px solid #fff;
     overflow: hidden;
