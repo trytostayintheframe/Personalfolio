@@ -1026,7 +1026,7 @@ html {
   font-family: "Fatboy129", serif;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 430px) {
 
   /* Reset frame scaling */
   :root { --frame-zoom: 1 !important; }
