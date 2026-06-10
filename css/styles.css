@@ -1131,8 +1131,8 @@ html {
     top: -18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 238px;
-    max-width: 68%;
+    width: 208px;
+    max-width: 62%;
     height: auto;
   }
   .m-skills-col {
@@ -1313,9 +1313,12 @@ html {
     pointer-events: none;
   }
   .m-view-btn {
+    /* Центр стикера на правом ребре мокапа телефона:
+       мокап 188px по центру карточки → ребро на 50% + 94px */
     position: absolute;
     top: 201px;
-    right: -28px;
+    left: calc(50% + 94px);
+    transform: translateX(-50%);
     width: 80px;
     height: auto;
     z-index: 3;
@@ -1341,14 +1344,14 @@ html {
     margin-left: -16px;
     height: auto;
     display: block;
-    position: relative;
-    top: -4px;
   }
   .m-bg-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 12px;
+    /* Видимая линия — у нижнего края svg (15/16px):
+       21 + 1 = 22px от линии до текста сверху, 7 + 15 = 22px снизу */
+    padding: 21px 12px 7px;
   }
   .m-bg-row-left {
     display: flex;
@@ -1393,7 +1396,7 @@ html {
     margin-top: 52px;
     background: #7e1bff;
     border-radius: 20px 20px 0 0;
-    min-height: 261px;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
