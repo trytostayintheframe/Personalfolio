@@ -18,9 +18,11 @@
   <script>
     (function () {
       var w = window.innerWidth;
-      var z = w < 1440 ? w / 1440 : (w >= 1520 && w < 1920 ? w / 1920 : 1);
-      if (z < 1) {
-        document.documentElement.style.setProperty('--frame-zoom', z.toFixed(6));
+      if (w >= 768) {
+        var z = w < 1440 ? w / 1440 : (w >= 1520 && w < 1920 ? w / 1920 : 1);
+        if (z < 1) {
+          document.documentElement.style.setProperty('--frame-zoom', z.toFixed(6));
+        }
       }
       /* Детект macOS: у Singfried01 на Mac другие вертикальные метрики
          (ascent/descent), из-за чего две строки .logo-word визуально
@@ -41,6 +43,7 @@
 </head>
 <body>
   <div class="frame">
+    <div class="desktop-view">
     <!-- Верхнее меню (замените href на свои ссылки) -->
     <div class="top-left-group text-helvetica">
       <a class="text-helvetica" href="https://t.me/thxbasedgod" target="_blank" rel="noopener noreferrer">TG</a>
@@ -273,6 +276,124 @@
       <span class="layout-guide-line" style="--lg-x: 1303px"></span>
       <span class="layout-guide-line" style="--lg-x: 1731px"></span>
       <span class="layout-guide-line" style="--lg-x: 1840px"></span>
+    </div>
+    </div>
+
+    <div class="mobile-view">
+      <!-- Nav -->
+      <nav class="m-nav text-helvetica">
+        <a href="https://t.me/thxbasedgod" target="_blank" rel="noopener noreferrer">TG</a>
+        <a href="https://www.instagram.com/try_acting_weird/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        <a href="https://www.linkedin.com/in/vladimir-pikalev-311326223/?skipRedirect=true" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+        <a href="docs/cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      </nav>
+
+      <!-- Hero -->
+      <div class="m-hero">
+        <h1 class="m-logo">В<span class="logo-o-special">o</span>ва<br>пикалёв</h1>
+        <div class="m-subtitles">
+          <p>SENIOR PRODUCT DESIGNER</p>
+          <p>EX.PINKMAN / МТС</p>
+        </div>
+      </div>
+
+      <!-- About / Avatar -->
+      <div class="m-about">
+        <p class="m-desc">Проектирую и запускаю продуктовые сценарии с измеримым результатом. оплата по биометрии в финтехе — от концепции до релиза. рост конверсии в МТС: 20% → 27%</p>
+        <div class="m-avatar-area">
+          <img class="m-avatar-img" src="img/avatar.png" alt="Портрет с наклейками">
+          <div class="m-skills-col">
+            <span>ART DIRECTION</span>
+            <span>UX DESIGN</span>
+            <span>INTERFACE DESIGN</span>
+            <span>VISUAL DESIGN</span>
+            <span>MOBILE DESIGN</span>
+          </div>
+          <div class="m-worked-block">
+            <p class="m-worked-text">Работал<br>С технологичными брендами</p>
+            <div class="m-brand-circles">
+              <div class="m-brand-circle" style="background:#ff0032;z-index:3;"><img src="img/MTS.svg" alt="МТС"></div>
+              <div class="m-brand-circle" style="background:#1d1d1b;z-index:2;"><img src="img/alfa.svg" alt="Альфа"></div>
+              <div class="m-brand-circle" style="background:#000;z-index:1;"><img src="img/pinkman.svg" alt="Pinkman"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cases -->
+      <div class="m-cases">
+        <h2 class="m-section-title">Пр<span class="m-fatboy">o</span>дуктовые кейс<span class="m-fatboy">ы</span></h2>
+        <div class="m-cases-list">
+          <a class="m-case-card" href="https://buildin.ai/share/c93eb7f2-3a7c-4168-afd9-a662e0c791c9?code=6DNLF1" target="_blank" rel="noopener noreferrer">
+            <img class="m-case-bg" src="img/BackgroundBlue.png" alt="">
+            <div class="m-case-top">
+              <p class="m-case-name">МТС Travel</p>
+              <p class="m-case-desc">CR в поиск +7%, -45% отток, редизайн главной страницы</p>
+            </div>
+            <img class="m-case-mockup" src="img/case1.png" alt="МТС Travel">
+            <div class="m-view-btn"><span>смотреть<br>кейс</span></div>
+          </a>
+          <a class="m-case-card" href="https://buildin.ai/share/333279b4-68dd-4a17-abdc-b020e2ed0791?code=6DNLF1" target="_blank" rel="noopener noreferrer">
+            <img class="m-case-bg" src="img/BackgroundPink.png" alt="">
+            <div class="m-case-top">
+              <p class="m-case-name">Альфа-банк</p>
+              <p class="m-case-desc">CR в подключение +9,6%, NPS +54. Оплата по биометрии</p>
+            </div>
+            <img class="m-case-mockup" src="img/case2.png" alt="Альфа-банк">
+            <div class="m-view-btn"><span>смотреть<br>кейс</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Background section -->
+      <div class="m-bg-section">
+        <h2 class="m-section-title">Бэкграун<span class="m-fatboy">д</span></h2>
+        <div class="m-bg-rows">
+          <div class="m-bg-row">
+            <div class="m-bg-row-left">
+              <div class="m-brand-icon" style="background:#1d1d1b;"><img src="img/alfa.svg" alt="Альфа-банк"></div>
+              <span>Альфа-банк / ART DIRECTION</span>
+            </div>
+            <span class="m-bg-year">2024</span>
+          </div>
+          <div class="m-bg-row">
+            <div class="m-bg-row-left">
+              <div class="m-brand-icon" style="background:#ff0032;"><img src="img/MTS.svg" alt="МТС"></div>
+              <span>МТС Travel / PRODUCT DESIGN</span>
+            </div>
+            <span class="m-bg-year">2023</span>
+          </div>
+          <div class="m-bg-row">
+            <div class="m-bg-row-left">
+              <div class="m-brand-icon" style="background:#330066;"><img src="img/Renlife.svg" alt="Ренессанс"></div>
+              <span>Ренессанс / PRODUCT DESIGN</span>
+            </div>
+            <span class="m-bg-year">2022</span>
+          </div>
+          <div class="m-bg-row">
+            <div class="m-bg-row-left">
+              <div class="m-brand-icon" style="background:#000000;"><img src="img/pinkman.svg" alt="Pinkman"></div>
+              <span>Pinkman / 3D ILLUSTRATION</span>
+            </div>
+            <span class="m-bg-year">2021</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="m-footer">
+        <nav class="m-footer-nav text-helvetica">
+          <a href="https://t.me/thxbasedgod" target="_blank" rel="noopener noreferrer">TG</a>
+          <a href="https://www.instagram.com/try_acting_weird/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+          <a href="https://www.linkedin.com/in/vladimir-pikalev-311326223/?skipRedirect=true" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+          <a href="docs/cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
+        <h2 class="m-footer-title">Обсу<span class="m-fatboy">д</span>им задачу?</h2>
+        <div class="m-footer-bottom">
+          <a class="m-footer-up" href="#" id="m-footer-link-up">ВВЕРХ <img src="img/icon_up.svg" alt=""></a>
+          <a class="m-footer-slot" href="https://t.me/thxbasedgod" target="_blank" rel="noopener noreferrer">ПОДОБРАТЬ СЛОТ</a>
+        </div>
+      </footer>
     </div>
 
   </div>

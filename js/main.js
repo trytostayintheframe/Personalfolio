@@ -37,6 +37,17 @@
         if (!frame) return;
 
         var w = window.innerWidth;
+
+        /* On mobile: disable scaling, let CSS handle layout */
+        if (w < 768) {
+          root.style.setProperty('--frame-zoom', '1');
+          frame.style.height = '';
+          frame.style.transform = 'none';
+          document.body.style.height = '';
+          document.body.style.overflowY = '';
+          return;
+        }
+
         var z = compute(w);
         root.style.setProperty('--frame-zoom', z < 1 ? z.toFixed(6) : '1');
 
