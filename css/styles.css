@@ -1123,23 +1123,23 @@ html {
   .m-avatar-area {
     position: relative;
     width: 100%;
-    /* Высота тоже fluid: аватар 216px ширины, aspect ~1.7, + место под скиллы */
     height: 420px;
     margin: 0 auto;
   }
   .m-avatar-img {
+    /* Аватар по центру (как в Figma), сверху зоны */
     position: absolute;
     top: 0;
     left: 50%;
-    /* Смещаем влево чтобы оставить место скиллам справа — ~33% от ширины */
-    transform: translateX(-80%);
-    width: 63%; /* 216/344 ≈ 63% — масштабируется вместе с контейнером */
-    max-width: 216px;
+    transform: translateX(-50%);
+    width: 216px;
+    max-width: 62%;
     height: auto;
   }
   .m-skills-col {
+    /* Скиллы по нижне-правому краю зоны */
     position: absolute;
-    top: 342px;
+    bottom: 0;
     right: 0;
     display: flex;
     flex-direction: column;
@@ -1157,12 +1157,10 @@ html {
     display: block;
   }
   .m-worked-block {
+    /* Блок «Работал» по нижне-левому краю зоны */
     position: absolute;
-    top: 363px;
+    bottom: 0;
     left: 0;
-    /* fluid ширина — не фиксировать в px */
-    width: auto;
-    height: 57px;
   }
   .m-worked-text {
     font-family: "Inter", sans-serif;
@@ -1173,10 +1171,16 @@ html {
     color: #000;
     margin: 0;
   }
+  /* «брендами» + кружки всегда на одной строке */
+  .m-worked-brands-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   .m-brand-circles {
     display: flex;
     flex-direction: row;
-    margin-top: 8px;
+    flex-shrink: 0;
   }
   .m-brand-circle {
     width: 28px;
