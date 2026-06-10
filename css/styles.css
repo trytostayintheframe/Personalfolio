@@ -1212,16 +1212,16 @@ html {
   }
   .m-brand-circle:first-child { margin-left: 0; }
   .m-brand-circle img {
-    width: 21px;
-    height: 21px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
   }
   /* МТС: показываем весь бейдж со словесным логотипом (как в десктопе,
      первый скролл). Чуть увеличиваем, чтобы буквы «МТС» читались крупнее,
      но не обрезались. */
   .m-brand-circle img.m-mts-logo {
-    width: 24px;
-    height: 24px;
+    width: 25px;
+    height: 25px;
     object-fit: contain;
   }
 
@@ -1316,10 +1316,10 @@ html {
     /* Центр стикера на правом ребре мокапа телефона:
        мокап 188px по центру карточки → ребро на 50% + 94px */
     position: absolute;
-    top: 205px;
+    top: 209px;
     left: calc(50% + 94px);
     transform: translateX(-50%);
-    width: 80px;
+    width: 81px;
     height: auto;
     z-index: 3;
     pointer-events: none;
@@ -1369,8 +1369,8 @@ html {
     flex-shrink: 0;
   }
   .m-brand-icon img {
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
     object-fit: contain;
   }
   .m-bg-row-left > span {
@@ -1396,7 +1396,7 @@ html {
     margin-top: 52px;
     background: #7e1bff;
     border-radius: 20px 20px 0 0;
-    min-height: 340px;
+    min-height: 310px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1433,7 +1433,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px 16px;
+    padding: 0 16px 12px;
     font-family: "Inter", sans-serif;
     font-size: 14px;
     letter-spacing: -0.14px;
