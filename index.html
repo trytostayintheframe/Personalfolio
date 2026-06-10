@@ -18,7 +18,7 @@
   <script>
     (function () {
       var w = window.innerWidth;
-      if (w >= 768) {
+      if (w > 430) {
         var z = w < 1440 ? w / 1440 : (w >= 1520 && w < 1920 ? w / 1920 : 1);
         if (z < 1) {
           document.documentElement.style.setProperty('--frame-zoom', z.toFixed(6));
