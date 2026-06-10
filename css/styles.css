@@ -1205,9 +1205,9 @@ html {
   }
   .m-brand-circle:first-child { margin-left: 0; }
   .m-brand-circle img {
-    width: 21px;
-    height: 21px;
-    object-fit: contain;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
   }
 
   /* ===== CASES ===== */
