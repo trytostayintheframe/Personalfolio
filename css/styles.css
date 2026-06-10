@@ -1050,7 +1050,7 @@ html {
   .btn-napisat {
     width: 220px;
     height: 48px;
-    bottom: 20px;
+    bottom: 0;
   }
 
   /* ===== NAV ===== */
@@ -1130,10 +1130,10 @@ html {
     /* Аватар по центру (как в Figma), сверху зоны */
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 46%;
     transform: translateX(-50%);
-    width: 216px;
-    max-width: 62%;
+    width: 244px;
+    max-width: 68%;
     height: auto;
   }
   .m-skills-col {
@@ -1314,28 +1314,13 @@ html {
     pointer-events: none;
   }
   .m-view-btn {
-    /* Фигма: стикер с центром ≈ (282, 252) карточки */
     position: absolute;
-    top: 220px;
-    right: 61px;
-    width: 64px;
-    height: 64px;
-    background: rgba(0,0,0,0.7);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    bottom: 16px;
+    right: -4px;
+    width: 96px;
+    height: auto;
     z-index: 3;
-    transform: rotate(15deg);
-  }
-  .m-view-btn span {
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    line-height: 16px;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    font-style: italic;
+    pointer-events: none;
   }
 
   /* ===== BACKGROUND SECTION ===== */
@@ -1352,12 +1337,18 @@ html {
     display: flex;
     flex-direction: column;
   }
+  .m-bg-divider {
+    /* Выходим за padding родителя, чтобы линия шла от края до края */
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    height: auto;
+    display: block;
+  }
   .m-bg-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 12px;
-    border-bottom: 1px solid #afafaf;
+    padding: 18px 12px;
   }
   .m-bg-row-left {
     display: flex;
@@ -1407,6 +1398,13 @@ html {
     display: flex;
     flex-direction: column;
   }
+  /* Белый blob-контейнер вокруг заголовка, как на десктопе */
+  .m-footer-title-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .m-footer-nav {
     display: flex;
     align-items: center;
@@ -1424,17 +1422,19 @@ html {
   .m-footer-title {
     font-family: "Singfried01", serif;
     font-size: 60px;
-    line-height: 48px;
+    line-height: 52px;
     letter-spacing: -0.6px;
     text-align: center;
     color: #000;
     font-weight: normal;
-    margin: auto 0;
-    padding: 0 20px;
+    margin: 0;
+    padding: 14px 36px;
+    background: #fff;
+    border-radius: 100px;
   }
   .m-footer-title .m-fatboy {
     font-size: 60px;
-    line-height: 48px;
+    line-height: 52px;
   }
   .m-footer-bottom {
     display: flex;
@@ -1458,6 +1458,5 @@ html {
   .m-footer-up img {
     width: 22px;
     height: 22px;
-    filter: invert(1);
   }
 }
