@@ -1115,16 +1115,15 @@ html {
     letter-spacing: -0.14px;
     text-transform: uppercase;
     color: #000;
-    /* Фигма: текст w 310, до аватара 30px (аватар на y102, текст 72px высотой) */
-    margin: 0 auto 30px 0;
-    width: 310px;
-    max-width: 100%;
+    /* ~90% ширины контейнера — fluid, не фиксированные 310px */
+    margin: 0 0 30px;
+    width: 90%;
+    max-width: 310px;
   }
   .m-avatar-area {
     position: relative;
     width: 100%;
-    max-width: 344px;
-    /* Фигма: вся зона 522, аватар с y102 → 420 после выноса описания наружу */
+    /* Высота тоже fluid: аватар 216px ширины, aspect ~1.7, + место под скиллы */
     height: 420px;
     margin: 0 auto;
   }
@@ -1132,12 +1131,13 @@ html {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) translateX(-2px);
-    width: 216px;
+    /* Смещаем влево чтобы оставить место скиллам справа — ~33% от ширины */
+    transform: translateX(-80%);
+    width: 63%; /* 216/344 ≈ 63% — масштабируется вместе с контейнером */
+    max-width: 216px;
     height: auto;
   }
   .m-skills-col {
-    /* Фигма: y444 от верха зоны (−102 = 342), правый край по краю зоны */
     position: absolute;
     top: 342px;
     right: 0;
@@ -1157,11 +1157,11 @@ html {
     display: block;
   }
   .m-worked-block {
-    /* Фигма: y465 от верха зоны (−102 = 363), w 178, кружки поверх 3-й строки */
     position: absolute;
     top: 363px;
     left: 0;
-    width: 178px;
+    /* fluid ширина — не фиксировать в px */
+    width: auto;
     height: 57px;
   }
   .m-worked-text {
@@ -1174,28 +1174,26 @@ html {
     margin: 0;
   }
   .m-brand-circles {
-    position: absolute;
-    left: 82px;
-    top: 35px;
     display: flex;
     flex-direction: row;
+    margin-top: 8px;
   }
   .m-brand-circle {
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     border: 2px solid #fff;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -4px;
+    margin-left: -5px;
     flex-shrink: 0;
   }
   .m-brand-circle:first-child { margin-left: 0; }
   .m-brand-circle img {
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
   }
 
