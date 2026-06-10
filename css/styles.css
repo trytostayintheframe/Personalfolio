@@ -1191,15 +1191,15 @@ html {
     flex-shrink: 0;
   }
   .m-brand-circle {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     border: 2px solid #fff;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -6px;
+    margin-left: -5px;
     flex-shrink: 0;
   }
   .m-brand-circle:first-child { margin-left: 0; }
