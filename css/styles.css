@@ -1176,6 +1176,12 @@ html {
     display: flex;
     align-items: center;
     gap: 8px;
+    /* Убираем любой отступ сверху — расстояние задаёт только line-height текста */
+    margin-top: 0;
+  }
+  .m-worked-brands-row .m-worked-text {
+    /* line-height совпадает с <p> выше, поэтому строки равноудалены */
+    line-height: 18px;
   }
   .m-brand-circles {
     display: flex;
@@ -1183,21 +1189,21 @@ html {
     flex-shrink: 0;
   }
   .m-brand-circle {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 2px solid #fff;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -5px;
+    margin-left: -6px;
     flex-shrink: 0;
   }
   .m-brand-circle:first-child { margin-left: 0; }
   .m-brand-circle img {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
   }
 
