@@ -1143,8 +1143,16 @@ html {
     right: 0;
     display: flex;
     flex-direction: column;
+    /* Группы выровнены по общему правому краю (как в десктопе) */
     align-items: flex-end;
-    text-align: right;
+  }
+  .m-skills-group {
+    display: flex;
+    flex-direction: column;
+    /* Внутри группы пункты выровнены влево под самым широким (опорным):
+       UX DESIGN под ART DIRECTION; VISUAL/MOBILE под INTERFACE DESIGN. */
+    align-items: flex-start;
+    text-align: left;
   }
   .m-skills-col span {
     font-family: "Inter", sans-serif;
