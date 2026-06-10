@@ -1042,6 +1042,12 @@ html {
   .desktop-view { display: none !important; }
   .mobile-view { display: flex; flex-direction: column; width: 100%; }
 
+  /* iOS: овер-скролл снизу и зона home-индикатора должны быть фиолетовыми,
+     как футер, а сверху — белыми. Двухцветный фон решает оба случая. */
+  html, body {
+    background: linear-gradient(to bottom, #fff 50%, #7e1bff 50%);
+  }
+
   /* Hide desktop-only fixed elements */
   #custom-cursor,
   #brand-preview { display: none !important; }
@@ -1433,7 +1439,8 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px 12px;
+    /* 12px + зона home-индикатора iOS */
+    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 0px));
     font-family: "Inter", sans-serif;
     font-size: 14px;
     letter-spacing: -0.14px;
