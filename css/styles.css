@@ -1213,8 +1213,8 @@ html {
      первый скролл). Чуть увеличиваем, чтобы буквы «МТС» читались крупнее,
      но не обрезались. */
   .m-brand-circle img.m-mts-logo {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
   }
 
