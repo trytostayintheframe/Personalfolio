@@ -1131,8 +1131,8 @@ html {
     top: -18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 208px;
-    max-width: 62%;
+    width: 238px;
+    max-width: 68%;
     height: auto;
   }
   .m-skills-col {
@@ -1316,7 +1316,7 @@ html {
     /* Центр стикера на правом ребре мокапа телефона:
        мокап 188px по центру карточки → ребро на 50% + 94px */
     position: absolute;
-    top: 201px;
+    top: 205px;
     left: calc(50% + 94px);
     transform: translateX(-50%);
     width: 80px;
@@ -1369,8 +1369,8 @@ html {
     flex-shrink: 0;
   }
   .m-brand-icon img {
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
   }
   .m-bg-row-left > span {
@@ -1396,7 +1396,7 @@ html {
     margin-top: 52px;
     background: #7e1bff;
     border-radius: 20px 20px 0 0;
-    min-height: 380px;
+    min-height: 340px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
