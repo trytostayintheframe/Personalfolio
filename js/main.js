@@ -179,6 +179,32 @@
         });
       }
 
+      var mFooterLinkUp = document.getElementById('m-footer-link-up');
+      if (mFooterLinkUp) {
+        mFooterLinkUp.addEventListener('click', function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      /* On mobile, hide НАПИСАТЬ btn when mobile footer is visible */
+      var mFooter = document.querySelector('.m-footer');
+      var btnNapisatMobile = document.querySelector('.btn-napisat');
+      if (btnNapisatMobile && mFooter) {
+        var mFooterObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              btnNapisatMobile.style.opacity = '0';
+              btnNapisatMobile.style.pointerEvents = 'none';
+            } else {
+              btnNapisatMobile.style.opacity = '1';
+              btnNapisatMobile.style.pointerEvents = 'auto';
+            }
+          });
+        }, { threshold: 0.1 });
+        mFooterObserver.observe(mFooter);
+      }
+
       // Кастомный курсор в зоне кейсов
       const cursor = document.getElementById('custom-cursor');
 
