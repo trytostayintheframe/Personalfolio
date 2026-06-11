@@ -1056,10 +1056,9 @@ html {
   .btn-napisat {
     width: 220px;
     height: 48px;
-    /* В Telegram WebView safe-area = 0 (нет системной полосы) — даём 12px.
-       В Safari с домашним индикатором safe-area ≈ 34px — этого хватает.
-       max() берёт большее из двух значений, работает везде. */
-    bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    /* min(max()) гарантирует: минимум 12px, максимум 44px (больше реального
+       home-indicator на любом iPhone), независимо от значения в WebView. */
+    bottom: min(max(12px, env(safe-area-inset-bottom, 12px)), 44px);
   }
 
   /* ===== NAV ===== */
