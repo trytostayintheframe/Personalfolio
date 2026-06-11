@@ -1322,19 +1322,16 @@ html {
     pointer-events: none;
   }
   .m-view-btn {
+    /* Инлайн-SVG (use → #m-case-sticker): вектор рендерится сразу в
+       разрешении экрана, без промежуточной растеризации как у <img>. */
     position: absolute;
     top: 209px;
     left: calc(50% + 53px);
     width: 82px;
+    aspect-ratio: 218 / 233;
     height: auto;
     z-index: 3;
     pointer-events: none;
-    /* Принудительный GPU-слой: WebKit снаппит позицию к целым device-пикселям,
-       иначе дробный calc() размывает весь элемент. */
-    transform: translateZ(0);
-    /* Подсказываем рендереру не смягчать растр внутри SVG */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
   }
 
   /* ===== BACKGROUND SECTION ===== */
