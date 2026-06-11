@@ -1056,9 +1056,10 @@ html {
   .btn-napisat {
     width: 220px;
     height: 48px;
-    /* min(max()) гарантирует: минимум 12px, максимум 44px (больше реального
-       home-indicator на любом iPhone), независимо от значения в WebView. */
-    bottom: min(max(12px, env(safe-area-inset-bottom, 12px)), 44px);
+    /* База 12px + до 16px надбавки за home-indicator. Диапазон 12–28px в любом
+       браузере: WebView с нулевым inset (Telegram) даёт 12px, Safari в полный
+       экран — 28px, а завышенные значения (Perplexity) режутся тем же потолком. */
+    bottom: calc(12px + min(env(safe-area-inset-bottom, 0px), 16px));
   }
 
   /* ===== NAV ===== */
@@ -1207,8 +1208,8 @@ html {
     transform: translateX(-5px);
   }
   .m-brand-circle {
-    width: 24px;
-    height: 24px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     border: 2px solid #fff;
     overflow: hidden;
@@ -1220,16 +1221,16 @@ html {
   }
   .m-brand-circle:first-child { margin-left: 0; }
   .m-brand-circle img {
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
     object-fit: contain;
   }
   /* МТС: показываем весь бейдж со словесным логотипом (как в десктопе,
      первый скролл). Чуть увеличиваем, чтобы буквы «МТС» читались крупнее,
      но не обрезались. */
   .m-brand-circle img.m-mts-logo {
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     object-fit: contain;
   }
 
@@ -1322,12 +1323,14 @@ html {
   }
   .m-view-btn {
     /* Центр стикера на правом ребре мокапа телефона:
-       мокап 188px по центру карточки → ребро на 50% + 94px */
+       мокап 188px по центру карточки → ребро на 50% + 94px.
+       Позиционируем через left без transform: translateX(-50%) от нечётной
+       ширины давал сдвиг на полпикселя, и текст в SVG мылился. Ширина 82px
+       (чётная), половина 41px → left: 50% + 94 − 41 = 50% + 53px. */
     position: absolute;
     top: 209px;
-    left: calc(50% + 94px);
-    transform: translateX(-50%);
-    width: 81px;
+    left: calc(50% + 53px);
+    width: 82px;
     height: auto;
     z-index: 3;
     pointer-events: none;
