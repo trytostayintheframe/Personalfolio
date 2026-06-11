@@ -1322,11 +1322,6 @@ html {
     pointer-events: none;
   }
   .m-view-btn {
-    /* Центр стикера на правом ребре мокапа телефона:
-       мокап 188px по центру карточки → ребро на 50% + 94px.
-       Позиционируем через left без transform: translateX(-50%) от нечётной
-       ширины давал сдвиг на полпикселя, и текст в SVG мылился. Ширина 82px
-       (чётная), половина 41px → left: 50% + 94 − 41 = 50% + 53px. */
     position: absolute;
     top: 209px;
     left: calc(50% + 53px);
@@ -1334,6 +1329,12 @@ html {
     height: auto;
     z-index: 3;
     pointer-events: none;
+    /* Принудительный GPU-слой: WebKit снаппит позицию к целым device-пикселям,
+       иначе дробный calc() размывает весь элемент. */
+    transform: translateZ(0);
+    /* Подсказываем рендереру не смягчать растр внутри SVG */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 
   /* ===== BACKGROUND SECTION ===== */
