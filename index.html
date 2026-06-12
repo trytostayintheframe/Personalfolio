@@ -102,11 +102,10 @@
     <div class="left-worked-brands">БРЕНДАМИ</div>
 
     <!-- Аватар -->
-    <img
-      class="avatar"
-      src="img/avatar.png"
-      alt="Портрет с наклейками"
-    />
+    <picture>
+      <source srcset="img/avatar.webp" type="image/webp" />
+      <img class="avatar" src="img/avatar.png" alt="Портрет с наклейками" decoding="async" />
+    </picture>
 
     <!-- Logo Brand -->
     <div id="logo-brand-wrapper" class="logo-brand-wrapper">
@@ -136,8 +135,8 @@
     </div>
 
     <!-- Фоновые изображения -->
-    <img class="background-blue" id="bg-blue" src="img/BackgroundBlue.png" alt="" />
-    <img class="background-pink" id="bg-pink" src="img/BackgroundPink.png" alt="" />
+    <picture><source srcset="img/BackgroundBlue.webp" type="image/webp" /><img class="background-blue" id="bg-blue" src="img/BackgroundBlue.png" alt="" loading="lazy" decoding="async" /></picture>
+    <picture><source srcset="img/BackgroundPink.webp" type="image/webp" /><img class="background-pink" id="bg-pink" src="img/BackgroundPink.png" alt="" loading="lazy" decoding="async" /></picture>
 
     <!-- Заголовок кейсов -->
     <div class="cases-title">
@@ -157,15 +156,15 @@
     <div id="case-sub-2" style="position: absolute; left: 30px; top: 2087px; font-family: 'Inter', sans-serif; font-size: 30px; font-weight: 400; line-height: 38px; color: #000000; text-transform: uppercase; opacity: 0; transition: opacity 0.4s ease;">CR В ПОДКЛЮЧЕНИЕ<br>+9,6%, NPS +54. ОПЛАТА<br>ПО БИОМЕТРИИ</div>
 
     <!-- Кейс 1 -->
-    <img id="case-img-1" src="img/case1.png" alt="Case 1" style="position: absolute; width: 360px; height: 527px; left: 540px; top: 2014px; opacity: 1; transition: opacity 0.4s ease;" />
+    <picture><source srcset="img/case1.webp" type="image/webp" /><img id="case-img-1" src="img/case1.png" alt="Case 1" loading="lazy" decoding="async" style="position: absolute; width: 360px; height: 527px; left: 540px; top: 2014px; opacity: 1; transition: opacity 0.4s ease;" /></picture>
 
     <!-- Кейс 2 -->
-    <img id="case-img-2" src="img/case2.png" alt="Case 2" style="position: absolute; width: 360px; height: 527px; left: 540px; top: 2014px; opacity: 0; transition: opacity 0.4s ease;" />
+    <picture><source srcset="img/case2.webp" type="image/webp" /><img id="case-img-2" src="img/case2.png" alt="Case 2" loading="lazy" decoding="async" style="position: absolute; width: 360px; height: 527px; left: 540px; top: 2014px; opacity: 0; transition: opacity 0.4s ease;" /></picture>
 
     <!-- Кейс 1 — story -->
     <div class="story-wrapper" id="story-1" style="position: absolute; left: 1238px; top: 2014px; width: 96px; height: 96px;" onclick="activateStory(0)">
       <div style="width: 96px; height: 96px;">
-        <img src="img/story1.svg" alt="Story 1" style="width: 90px; height: 90px; display: block; border-radius: 50%; background: white; margin: 3px auto 0;" />
+        <img src="img/story1.svg" alt="Story 1" loading="lazy" decoding="async" style="width: 90px; height: 90px; display: block; border-radius: 50%; background: white; margin: 3px auto 0;" />
       </div>
       <svg class="story-ring-svg" viewBox="0 0 96 96" width="96" height="96">
         <circle class="story-ring-progress" cx="48" cy="48" r="44"
@@ -177,7 +176,7 @@
     <!-- Кейс 2 — story -->
     <div class="story-wrapper" id="story-2" style="position: absolute; left: 1238px; top: 2128px; width: 96px; height: 96px;" onclick="activateStory(1)">
       <div style="width: 96px; height: 96px;">
-        <img src="img/story2.svg" alt="Story 2" style="width: 90px; height: 90px; display: block; border-radius: 50%; background: white; margin: 3px auto 0;" />
+        <img src="img/story2.svg" alt="Story 2" loading="lazy" decoding="async" style="width: 90px; height: 90px; display: block; border-radius: 50%; background: white; margin: 3px auto 0;" />
       </div>
       <svg class="story-ring-svg" viewBox="0 0 96 96" width="96" height="96">
         <circle class="story-ring-progress" cx="48" cy="48" r="44"
@@ -321,7 +320,7 @@
       <div class="m-about">
         <p class="m-desc">Проектирую и запускаю продуктовые сценарии с измеримым результатом. оплата по биометрии в финтехе — <br>от концепции до релиза. рост конверсии в МТС: 20% → 27%</p>
         <div class="m-avatar-area">
-          <img class="m-avatar-img" src="img/avatar.png" alt="Портрет с наклейками">
+          <picture><source srcset="img/avatar.webp" type="image/webp"><img class="m-avatar-img" src="img/avatar.png" alt="Портрет с наклейками" decoding="async"></picture>
           <div class="m-skills-col">
             <div class="m-skills-group">
               <span>ART DIRECTION</span>
@@ -352,21 +351,21 @@
         <h2 class="m-section-title">Пр<span class="m-fatboy">o</span>дуктовые кейс<span class="m-fatboy">ы</span></h2>
         <div class="m-cases-list">
           <a class="m-case-card" href="https://buildin.ai/share/c93eb7f2-3a7c-4168-afd9-a662e0c791c9?code=6DNLF1" target="_blank" rel="noopener noreferrer">
-            <img class="m-case-bg" src="img/BackgroundBlue.png" alt="">
+            <picture><source srcset="img/BackgroundBlue.webp" type="image/webp"><img class="m-case-bg" src="img/BackgroundBlue.png" alt="" loading="lazy" decoding="async"></picture>
             <div class="m-case-top">
               <p class="m-case-name">МТС Travel</p>
               <p class="m-case-desc">CR в поиск +7%, -45% отток, редизайн главной страницы</p>
             </div>
-            <img class="m-case-mockup" src="img/case1.png" alt="МТС Travel">
+            <picture><source srcset="img/case1.webp" type="image/webp"><img class="m-case-mockup" src="img/case1.png" alt="МТС Travel" loading="lazy" decoding="async"></picture>
             <svg class="m-view-btn" role="img" aria-label="Смотреть кейс"><use href="#m-case-sticker"/></svg>
           </a>
           <a class="m-case-card" href="https://buildin.ai/share/333279b4-68dd-4a17-abdc-b020e2ed0791?code=6DNLF1" target="_blank" rel="noopener noreferrer">
-            <img class="m-case-bg" src="img/BackgroundPink.png" alt="">
+            <picture><source srcset="img/BackgroundPink.webp" type="image/webp"><img class="m-case-bg" src="img/BackgroundPink.png" alt="" loading="lazy" decoding="async"></picture>
             <div class="m-case-top">
               <p class="m-case-name">Альфа-банк</p>
               <p class="m-case-desc">CR в подключение +9,6%, NPS +54. Оплата по биометрии</p>
             </div>
-            <img class="m-case-mockup" src="img/case2.png" alt="Альфа-банк">
+            <picture><source srcset="img/case2.webp" type="image/webp"><img class="m-case-mockup" src="img/case2.png" alt="Альфа-банк" loading="lazy" decoding="async"></picture>
             <svg class="m-view-btn" role="img" aria-label="Смотреть кейс"><use href="#m-case-sticker"/></svg>
           </a>
         </div>
@@ -383,7 +382,7 @@
             </div>
             <span class="m-bg-year">2024</span>
           </div>
-          <img class="m-bg-divider" src="img/Line for brand.svg" alt="">
+          <img class="m-bg-divider" src="img/Line for brand.svg" alt="" loading="lazy">
           <div class="m-bg-row">
             <div class="m-bg-row-left">
               <div class="m-brand-icon" style="background:#ff0032;"><img src="img/MTS.svg" alt="МТС"></div>
@@ -391,7 +390,7 @@
             </div>
             <span class="m-bg-year">2023</span>
           </div>
-          <img class="m-bg-divider" src="img/Line for brand.svg" alt="">
+          <img class="m-bg-divider" src="img/Line for brand.svg" alt="" loading="lazy">
           <div class="m-bg-row">
             <div class="m-bg-row-left">
               <div class="m-brand-icon" style="background:#330066;"><img src="img/Renlife.svg" alt="Ренессанс"></div>
@@ -399,7 +398,7 @@
             </div>
             <span class="m-bg-year">2022</span>
           </div>
-          <img class="m-bg-divider" src="img/Line for brand.svg" alt="">
+          <img class="m-bg-divider" src="img/Line for brand.svg" alt="" loading="lazy">
           <div class="m-bg-row">
             <div class="m-bg-row-left">
               <div class="m-brand-icon" style="background:#000000;"><img src="img/pinkman.svg" alt="Pinkman"></div>
@@ -407,7 +406,7 @@
             </div>
             <span class="m-bg-year">2021</span>
           </div>
-          <img class="m-bg-divider" src="img/Line for brand.svg" alt="">
+          <img class="m-bg-divider" src="img/Line for brand.svg" alt="" loading="lazy">
         </div>
       </div>
 
@@ -420,7 +419,7 @@
           <a href="docs/cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
         <div class="m-footer-title-wrap">
-          <img class="m-footer-title-img" src="img/task question.svg" alt="Обсудим задачу?">
+          <img class="m-footer-title-img" src="img/task question.svg" alt="Обсудим задачу?" loading="lazy">
         </div>
         <div class="m-footer-bottom">
           <a class="m-footer-slot" href="mailto:trytostayintheframe@gmail.com?subject=%D0%9D%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20Email">НАПИСАТЬ НА EMAIL</a>
