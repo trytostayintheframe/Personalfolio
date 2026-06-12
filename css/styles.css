@@ -1310,6 +1310,10 @@ html {
     width: 238px;
     max-width: 100%;
   }
+  /* Альфа: «+54» должен остаться на первой строке (перенос задан <br>) */
+  .m-case-desc-wide {
+    width: 290px;
+  }
   .m-case-mockup {
     /* Фигма: мокап 188px шириной, y116 от верха карточки */
     position: absolute;
