@@ -1455,11 +1455,12 @@ html {
     text-decoration: none;
   }
   .m-footer-title-img {
-    /* Стикер «Обсудим задачу?» с десктопа: облако + текст в две строки.
+    /* Стикер «Обсудим задачу?» — инлайн-SVG для чёткого рендера на Retina.
        Сдвиг вниз — оптическая центровка: масса текста в картинке выше центра. */
     display: block;
     width: 280px;
     max-width: 80%;
+    aspect-ratio: 600 / 367;
     height: auto;
     transform: translateY(8px);
   }
