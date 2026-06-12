@@ -1321,27 +1321,8 @@ html {
     transform: translateX(-50%);
     width: 188px;
     height: auto;
-    z-index: 2;
-    pointer-events: none;
-  }
-  /* Боковые телефоны Альфы позади основного (поворот ±12° запечён в PNG).
-     Фигма (карточка 375, мокап 172): bbox 173.4px, центры на ±75px от центра,
-     top 154. Масштаб под наш мокап 188px: ×1.093 → 190px, ±82px, top 158. */
-  .m-case-side {
-    position: absolute;
-    top: 158px;
-    width: 190px;
-    height: auto;
     z-index: 1;
     pointer-events: none;
-  }
-  .m-case-side-left {
-    left: calc(50% - 82px);
-    transform: translateX(-50%);
-  }
-  .m-case-side-right {
-    left: calc(50% + 83px);
-    transform: translateX(-50%);
   }
   .m-view-btn {
     /* Инлайн-SVG (use → #m-case-sticker): вектор рендерится сразу в
