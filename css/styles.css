@@ -540,12 +540,11 @@ html.is-mac #case-sub-2 {
   cursor: pointer;
 }
 
-.btn-napisat img {
+/* Инлайн-SVG: contain + прижатие к низу даёт preserveAspectRatio="xMidYMax meet" */
+.btn-napisat svg {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
 }
 
 /* Силовые линии сетки — только при ширине 1920-артборда */
